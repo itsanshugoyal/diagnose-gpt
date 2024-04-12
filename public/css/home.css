@@ -36,7 +36,7 @@ background:   -gradient(to right, #b6fbff, #83a4d4);
 /* --------------- */
 
 .navbar {
-  padding: 0 0 4.5rem;
+  padding: 45px;
 }
 
 .navbar-brand {
@@ -96,7 +96,7 @@ background:   -gradient(to right, #b6fbff, #83a4d4);
 
 .hero-section-container {
   background: linear-gradient(to right, #ecf2ff, #fbfcff);
-  padding: 32px;
+  /* padding: 32px; */
 }
 
 .hero-section {

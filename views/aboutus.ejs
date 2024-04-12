@@ -13,9 +13,11 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/css/home.css" />
   </head>
 
   <body>
+    <%- include('partials/navbar') %>
     <!-- About 1 - Bootstrap Brain Component -->
     <section class="py-3 py-md-5 py-xl-8">
       <div class="container">
@@ -92,6 +94,9 @@
         </div>
       </div>
     </section>
+
+    <%- include('partials/footer') %>
+
     <!-- Bootstrap JavaScript Libraries -->
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"

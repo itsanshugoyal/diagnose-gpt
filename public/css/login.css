@@ -1,0 +1,137 @@
+
+
+.v1{
+  
+  background: url('/assets/bggg.jpg');
+  background-size: cover;
+  background-position: cover;
+  height: 600px;
+  padding: 20px;
+}
+#img{
+  padding-right: 600px;
+}
+
+body {
+    
+    align-items: center; 
+    justify-content: center;
+    
+}
+
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+.form-container {
+
+
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 10px 10px 5px lightblue;
+    align-items: center;
+  }
+
+  .form-group {
+    margin-bottom: 15px;
+  }
+
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+
+  .submit-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: rgb(38, 199, 239);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .submit-btn:hover {
+    background-color: #4565a0;
+  }
+
+  p {
+    margin-top: 15px;
+  }
+
+
+
+
+
+
+
+
+
+
+  .navbar {
+    padding: 0 0 2rem;
+    /* margin-top: 20px;
+    margin-left: 10px; */
+  }
+  
+  .navbar-brand {
+    font-family: "Poppins", sans-serif;
+    font-size: 2.2rem;
+    font-weight: bold;
+    color: #1a8efd;
+    letter-spacing: 0.6px;
+    text-decoration: none;
+  }
+  
+  .nav-item {
+    padding: 0 18px;
+  }
+  .nav-link {
+    font-size: 1.2rem;
+    padding: 15px 20px;
+    font-family: "Montserrat-Light";
+    border-radius: 15px;
+  }
+  .nav-link:hover {
+    color: #0cc2ea;
+  }
+  
+  .nav-link:active {
+    /* border-bottom: 2px solid #373B7B; */
+    color: #373b7b;
+    font-weight: 500;
+  }
+  
+  .login > .nav-item > .nav-link {
+    padding: 14px 20px;
+    color: white;
+    border: 1px solid transparent;
+    border-radius: 28px;
+    outline: transparent;
+    background-color: #1a8efd;
+    font-size: 18px;
+    font-family: "Rubik", sans-serif;
+    letter-spacing: 0.8px;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+  .login > .nav-item > .nav-link:hover {
+    color: #1a8efd;
+    background-color: white;
+    border: 1px solid #1a8efd;
+  }
