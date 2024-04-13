@@ -1,20 +1,16 @@
 const express = require("express");
-const collection = require("./src/config");
-const bcrypt = require("bcrypt");
 const http = require("http");
-
+const User = require("./model/user");
 const passport = require("passport");
-const initializePassport = require("./src/passport-config");
-const { userInfo } = require("os");
+const session = require("express-session");
+const LocalStrategy = require("passport-local").Strategy;
 
 const socketIo = require("socket.io");
-const path = require("path");
 const formatMessage = require("./utils/messages");
 const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require("./utils/users");
 
 const cors = require("cors");
 
-// const server = require("http").createServer(app);
 const app = express();
 require("dotenv").config();
 const server = http.createServer(app);
@@ -27,16 +23,69 @@ const io = new socketIo.Server(server, {
   },
 });
 
-// app.io = require("socket.io")();
+/* mongoose connection */
+
+const MongoStore = require("connect-mongo");
+const mongoose = require("mongoose");
+const mongoString = "mongodb+srv://itsanshugoyal:anshu@cluster0.vcpoxfg.mongodb.net/";
+const connect = mongoose.connect(mongoString);
+const db = mongoose.connection;
+
+// Check database connected or not
+connect
+  .then(() => {
+    console.log("Database Connected Successfully");
+  })
+  .catch((err) => {
+    console.log(err);
+    console.log("Database cannot be Connected");
+  });
+
+/*
+  Session configuration and utilization of the MongoStore for storing
+  the session in the MongoDB database
+*/
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
+app.use(express.urlencoded({ extended: true }));
+app.use(
+  session({
+    secret: "your secret key",
+    resave: false,
+    saveUninitialized: true,
+    store: new MongoStore({ mongoUrl: db.client.s.url }),
+  })
+);
 
-/* home */
-app.get("/", (req, res) => {
-  res.render("home");
+/*
+  Setup the local passport strategy, add the serialize and 
+  deserialize functions that only saves the ID from the user
+  by default.
+*/
+const strategy = new LocalStrategy(User.authenticate());
+passport.use(strategy);
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+app.use(passport.initialize());
+app.use(passport.session());
+
+checkAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+};
+checkLoggedIn = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return res.redirect("/");
+  }
+  next();
+};
+
+app.get("/", checkAuthenticated, (req, res) => {
+  res.render("home.ejs", { name: req.user.name });
 });
 
 /* about */
@@ -94,71 +143,60 @@ app.post("/api/chat", async (req, res) => {
 app.post("/medicalquery", (req, res) => {});
 
 /* login */
-app.get("/login", (req, res) => {
-  res.render("login");
+app.get("/login", checkLoggedIn, (req, res) => {
+  res.render("login.ejs");
 });
 
-app.post("/login", async (req, res) => {
-  try {
-    const check = await collection.findOne({ name: req.body.username });
-    if (!check) {
-      res.send("User name cannot found");
-    }
-    // Compare the hashed password from the database with the plaintext password
-    const isPasswordMatch = await bcrypt.compare(req.body.password, check.password);
-    if (!isPasswordMatch) {
-      res.send("wrong Password");
-    } else {
-      res.render("home");
-    }
-  } catch {
-    res.send("wrong Details");
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    failureRedirect: "/login",
+    successRedirect: "/",
+  }),
+  (err, req, res, next) => {
+    if (err) next(err);
   }
-});
+);
 
 /* signup */
 
-app.get("/signup", (req, res) => {
-  res.render("signup");
+app.get("/signup", checkLoggedIn, (req, res) => {
+  res.render("signup.ejs");
 });
 
-app.post("/signup", async (req, res) => {
-  const data = {
-    name: req.body.username,
-    password: req.body.password,
-  };
-
-  // Check if the username already exists in the database
-  const existingUser = await collection.findOne({ name: data.name });
-
-  if (existingUser) {
-    res.send("User already exists. Please choose a different username.");
-  } else {
-    // Hash the password using bcrypt
-    const saltRounds = 10; // Number of salt rounds for bcrypt
-    const hashedPassword = await bcrypt.hash(data.password, saltRounds);
-
-    data.password = hashedPassword; // Replace the original password with the hashed one
-
-    const userdata = await collection.insertMany(data);
-    console.log(userdata);
-    res.redirect("/login");
-  }
+app.post("/signup", function (req, res) {
+  User.register(
+    new User({
+      email: req.body.email,
+      username: req.body.username,
+    }),
+    req.body.password,
+    function (err, msg) {
+      if (err) {
+        res.send(err);
+      } else {
+        // res.send({ message: "Successful" });
+        res.redirect("/");
+      }
+    }
+  );
 });
 
 /* logout */
 
-app.get("/logout", (req, res) => {
-  req.logout(); // Logout the current user
-  res.redirect("/"); // Redirect to the home screen
+app.post("/logout", function (req, res, next) {
+  req.logout(function (err) {
+    if (err) {
+      return next(err);
+    }
+    res.redirect("/");
+  });
 });
+
 /* chat room */
 
 app.get("/chat", (req, res) => {
   res.render("chatpage");
-});
-app.get("/chatroom", (req, res) => {
-  res.render("chatroom");
 });
 
 const botName = "GANDU";
