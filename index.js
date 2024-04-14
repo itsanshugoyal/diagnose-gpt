@@ -83,27 +83,37 @@ checkLoggedIn = (req, res, next) => {
   }
   next();
 };
-
+// app.locals.login;
 app.get("/", checkAuthenticated, (req, res) => {
-  res.render("home.ejs", { name: req.user.name });
+  // login = req.isAuthenticated();
+
+  res.render("home.ejs", { isAuthenticated: req.isAuthenticated() });
 });
 
 /* about */
 app.get("/about", (req, res) => {
-  res.render("aboutus");
+  res.render("aboutus", { isAuthenticated: req.isAuthenticated() });
 });
 
 /* about */
 app.get("/contact", (req, res) => {
-  res.render("contactus");
+  res.render("contactus", { isAuthenticated: req.isAuthenticated() });
 });
 
 /* medical query */
 
 app.get("/medicalquery", (req, res) => {
-  res.render("gpt");
+  res.render("gpt", { isAuthenticated: req.isAuthenticated() });
 });
+const prompt = `You are an AI assistant that is an expert in medical health and is part of a hospital system called medicare AI
+You know about symptoms and signs of various types of illnesses.
+You can provide expert advice on self-diagnosis options in the case where an illness can be treated using a home remedy.
+If a query requires serious medical attention with a doctor, recommend them to book an appointment with our doctors
+If you are asked a question that is not related to medical health respond with "Im sorry but your question is beyond my functionalities".
+Do not use external URLs or blogs to refer
+Format any lists on individual lines with a dash and a space in front of each line.
 
+>`;
 app.post("/api/chat", async (req, res) => {
   try {
     const { message } = req.body;
@@ -116,7 +126,7 @@ app.post("/api/chat", async (req, res) => {
       messages: [
         {
           role: "user",
-          content: message,
+          content: prompt + message,
         },
       ],
     };
@@ -144,7 +154,7 @@ app.post("/medicalquery", (req, res) => {});
 
 /* login */
 app.get("/login", checkLoggedIn, (req, res) => {
-  res.render("login.ejs");
+  res.render("login.ejs", { isAuthenticated: req.isAuthenticated() });
 });
 
 app.post(
@@ -161,20 +171,22 @@ app.post(
 /* signup */
 
 app.get("/signup", checkLoggedIn, (req, res) => {
-  res.render("signup.ejs");
+  res.render("signup.ejs", { isAuthenticated: req.isAuthenticated() });
 });
 
 app.post("/signup", function (req, res) {
   User.register(
     new User({
-      email: req.body.email,
-      username: req.body.username,
+      name: req.body.username,
+      username: req.body.email,
     }),
     req.body.password,
     function (err, msg) {
       if (err) {
         res.send(err);
+        console.log(err);
       } else {
+        console.log("success");
         // res.send({ message: "Successful" });
         res.redirect("/");
       }
@@ -198,8 +210,6 @@ app.post("/logout", function (req, res, next) {
 app.get("/chat", (req, res) => {
   res.render("chatpage");
 });
-
-const botName = "GANDU";
 
 // run when client connects
 io.on("connection", (socket) => {

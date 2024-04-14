@@ -67,7 +67,7 @@ background:   -gradient(to right, #b6fbff, #83a4d4);
   font-weight: 500;
 }
 
-.login > .nav-item > .nav-link {
+.login > .nav-item  .nav-link {
   padding: 14px 20px;
   color: white;
   border: 1px solid transparent;
@@ -80,7 +80,7 @@ background:   -gradient(to right, #b6fbff, #83a4d4);
   cursor: pointer;
   transition: all 0.4s ease;
 }
-.login > .nav-item > .nav-link:hover {
+.login > .nav-item  .nav-link:hover {
   color: #1a8efd;
   background-color: white;
   border: 1px solid #1a8efd;
@@ -562,4 +562,47 @@ overflow: hidden;
 .ft-social-links li a:hover, .ft-social-links li a:hover svg path {
   fill: #1A8EFD;
   border: 2px solid #1A8EFD;
+}
+
+/* medical query */
+
+
+
+
+
+
+#form1{
+  padding: 20px;
+}
+
+#main{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+#photo{
+  background-image: url("photo.png");
+  background-size: contain;
+  height: 100px;
+  width: 100px;
+  border-radius: 100%;
+}
+#heading{
+background-color: #C4D9E0;
+/* background-image: url("/assets/head.png"); */
+background-position: contain;
+height: 100px;
+  width: 950px;
+  /* color: white; */
+  padding: 15px;
+  border-radius: 15px;
+}
+#outer{
+  background-color: white;
+  width: 950px;
+}
+#remedies{
+  padding-bottom: 20px;;
+}
+#result{
+  margin-top: 20px;
 }

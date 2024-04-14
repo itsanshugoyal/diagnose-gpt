@@ -31,6 +31,8 @@
       </li>
     </ul>
     <ul class="login navbar-nav justify-content-end">
+      <% if (!login) { %>
+
       <li class="nav-item">
         <a class="nav-link" href="/login">Login</a>
       </li>
@@ -38,10 +40,13 @@
         <a class="nav-link" href="/signup">SignUp</a>
       </li>
 
-      <li>
+      <% } else { %>
+
+      <li class="nav-item">
         <form action="/logout" method="post">
-          <button class="nav-link fw-bold py-1 px-0 btn p=3 btn-dark text-white" type="submit">Logout</button>
+          <button class="nav-link" type="submit">Logout</button>
         </form>
+        <% } %>
       </li>
     </ul>
   </div>

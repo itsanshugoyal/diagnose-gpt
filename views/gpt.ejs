@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="/css/home.css" />
     <style>
       body {
-        background-image: url(back.jpg);
+        background-image: url("/assets/back_gpt.jpg");
+        background-size: contain;
       }
       #details {
         margin-top: 20px;
-        width: 1000px;
+        width: 950px;
         padding: 20px;
         background-color: #cdf5fd;
         border-radius: 10px;
@@ -39,100 +40,72 @@
     <header>
       <!-- navbar -->
 
-      <%- include('partials/navbar') %>
+      <%- include('partials/navbar',{login:isAuthenticated}) %>
     </header>
 
     <!-- details -->
-    <div class="container" id="details">
-      <form onsubmit="main()">
+
+    <div
+      style="
+        margin-bottom: 20px;
+        margin-left: 275px;
+        border: 1px solid white;
+        border-radius: 10px;
+        width: 950px;
+        box-shadow: 0px 0px 10px 10px white;
+      "
+    >
+      <div id="heading">
+        <center>
+          <h1>Enter the details for tests</h1>
+        </center>
+      </div>
+      <div id="outer">
+        <!-- <form class="row g-3" id="form1" onsubmit="main()"> -->
         <div class="row mb-3">
-          <label for="inputName" class="col-sm-2 col-form-label" style="margin-top: 10px">Name :</label>
-          <div class="col-sm-10" style="margin-top: 10px">
-            <input type="text" class="form-control" id="inputName" placeholder="Ex: John" />
-          </div>
-        </div>
-
-        <div class="row mb-3">
-          <label for="inputage" class="col-sm-2 col-form-label">Age :</label>
-          <div class="col-sm-10">
-            <input type="text" class="form-control" id="inputage" placeholder="Ex: 19" />
-          </div>
-        </div>
-
-        <fieldset class="row mb-3">
-          <legend class="col-form-label col-sm-2 pt-0">Gender :</legend>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked />
-              <label class="form-check-label" for="gridRadios1"> Male </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2" />
-              <label class="form-check-label" for="gridRadios2"> Female </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" />
-              <label class="form-check-label" for="gridRadios3"> Other </label>
-            </div>
-          </div>
-        </fieldset>
-
-        <!-- <fieldset class="row mb-3">
-          <legend class="col-form-label col-sm-2 pt-0">Relation :</legend>
-          <div class="col-sm-10">
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadio" id="gridRadios1" value="option1" checked />
-              <label class="form-check-label" for="gridRadio1"> Father </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadio" id="gridRadios2" value="option2" />
-              <label class="form-check-label" for="gridRadio2"> Mother </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadio" id="gridRadios3" value="option3" />
-              <label class="form-check-label" for="gridRadio3"> Child </label>
-            </div>
-            <div class="form-check">
-              <input class="form-check-input" type="radio" name="gridRadio" id="gridRadios3" value="option4" />
-              <label class="form-check-label" for="gridRadio4"> Friend </label>
-            </div>
-          </div>
-        </fieldset> -->
-
-        <div class="row mb-3">
-          <label for="inputage" class="col-sm-2 col-form-label">Previous Ailments (If any) :</label>
-          <div class="col-sm-10">
+          <label for="inputage" class="col-sm-3 col-form-label">Previous Ailments (If any) :</label>
+          <div class="col-sm-9">
             <input type="text" class="form-control" id="inputage" placeholder="Ex: Diabetes, Blood Pressure, etc." />
           </div>
         </div>
 
         <div class="row mb-3">
           <label for="inputage" class="col-sm-2 col-form-label">Symptoms :</label>
-          <div class="col-sm-10 chatbox">
-            <div id="messages"></div>
+          <!-- <div class="col-sm-10 chatbox"> -->
 
-            <input
-              type="text"
-              class="form-control"
-              id="input_symp"
-              placeholder="Ex: Fever, Vomitting, etc."
-              style="height: 100px"
-            />
-          </div>
+          <input
+            type="text"
+            class="form-control"
+            id="input_symp"
+            placeholder="Ex: Fever, Vomitting, etc."
+            style="height: 100px"
+          />
         </div>
+
         <center>
           <button
             onclick="generateResponse()"
             type="button"
-            class="btn btn-primary"
-            style="margin-bottom: 10px"
-            id="but"
+            class="btn cta-btn"
+            style="margin-top: 0px; margin-bottom: 10px"
           >
-            Recommend Me Test
+            Solve my HealthQuery
           </button>
         </center>
-      </form>
-      <div id="response"></div>
+
+        <label for="inputtests" class="col-sm col-form-label">AI Response :</label>
+        <div class="col-lg">
+          <!-- <input type="text" class="form-control chatbox" id="messages" style="height: 150px;"> -->
+          <div style="height: 150px; background-color: white" id="messages"></div>
+        </div>
+        <br />
+
+        <center>
+          <label for="inputcall" class="col-form-label">Still Unsure ?</label>
+          <button class="btn cta-btn" type="submit" style="margin-bottom: 15px">Call Us</button>
+        </center>
+        <!-- </form> -->
+      </div>
     </div>
 
     <!-- result section -->
@@ -145,6 +118,9 @@
         const userInput = document.getElementById("input_symp");
         const addMessage = (text, sender) => {
           const messageElem = document.createElement("div");
+          // Clear previous responses
+          messagesContainer.innerHTML = "";
+
           messageElem.classList.add("message");
           messageElem.classList.add(sender);
           messageElem.textContent = text;
