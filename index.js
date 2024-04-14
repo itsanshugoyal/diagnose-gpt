@@ -208,7 +208,7 @@ app.post("/logout", function (req, res, next) {
 /* chat room */
 
 app.get("/chat", (req, res) => {
-  res.render("chatpage");
+  res.render("chatpage", { isAuthenticated: req.isAuthenticated() });
 });
 
 // run when client connects

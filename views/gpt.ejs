@@ -83,12 +83,7 @@
         </div>
 
         <center>
-          <button
-            onclick="generateResponse()"
-            type="button"
-            class="btn cta-btn"
-            style="margin-top: 0px; margin-bottom: 10px"
-          >
+          <button type="button" class="btn cta-btn" style="margin-top: 0px; margin-bottom: 10px">
             Solve my HealthQuery
           </button>
         </center>
@@ -100,10 +95,10 @@
         </div>
         <br />
 
-        <center>
+        <!-- <center>
           <label for="inputcall" class="col-form-label">Still Unsure ?</label>
-          <button class="btn cta-btn" type="submit" style="margin-bottom: 15px">Call Us</button>
-        </center>
+          <button class="btn cta-btn" style="margin-bottom: 15px">Call Us</button>
+        </center> -->
         <!-- </form> -->
       </div>
     </div>
@@ -151,6 +146,15 @@
               userInput.value = "";
               fetchMessageFromChatGpt(message);
             }
+          }
+        });
+        const button = document.querySelector(".cta-btn");
+        button.addEventListener("click", () => {
+          const message = document.getElementById("input_symp").value.trim();
+          if (message !== "") {
+            addMessage(message, "user");
+            document.getElementById("input_symp").value = "";
+            fetchMessageFromChatGpt(message);
           }
         });
       });

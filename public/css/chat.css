@@ -18,9 +18,9 @@ body {
    font-family: 'Roboto', sans-serif;
    font-size: 16px;
    /* background: #1b1b32; */
-   background: rgb(16, 109, 140);
+   /* background: rgb(16, 109, 140); */
    margin: 20px;
-   background: url("../assets/chat-bg.jpg");
+   background: url("./medical.jpg");
    background-repeat: no-repeat;
    background-size: cover; 
 }
@@ -39,8 +39,8 @@ a {
    border: none;
    border-radius: 5px;
    /* background: #b1d8eb; */
-   background: rgb(41, 194, 217);
-   color: #3f5163;
+   background-color: #1192de;
+   color: white;
    border: none;
    font-size: 17px;
 }
@@ -51,21 +51,24 @@ a {
    padding: 5px 15px;
    border: none;
    border-radius: 25px;
-   background: #b1d8eb;
+   /* background: #b1d8eb; */
+   background: white;
    color: #3f5163;
    border: none;
    font-size: 17px;
 }
 
 .chat-container {
-   max-width: 1100px;
+   max-width: 700px;
+   height: 700px;
    margin: 30px auto;
    overflow: hidden;
+   box-shadow: white 0px 0px 10px 5px;
 }
 
 .chat-header {
-   background: #3b3b4f;
-   color: #fff;
+   background: #59bfe4;
+   color: black;
    /* border-top-left-radius: 5px;
    border-top-right-radius: 5px; */
    padding: 15px;
@@ -81,7 +84,8 @@ a {
 }
 
 .chat-sidebar {
-   background: #323244;
+   background: #59bfe4;
+   border: white 10px;
    color: #fff;
    padding: 20px 20px 60px;
    overflow-y: scroll;
@@ -104,16 +108,18 @@ a {
 
 .chat-messages {
    padding: 30px;
-   max-height: 500px;
+   max-height: 300px;
    overflow-y: scroll;
-   background: #34495e;
+   background: #757575;
+   background: transparent;
    min-height: 68vh;
 }
 
 .chat-messages .message {
    padding: 10px;
    margin-bottom: 15px;
-   background-color: #aac0c1;
+   background-color: #91c3e0;
+   opacity: 0.7;
    border-radius: 5px;
    overflow-wrap: break-word;
 }
@@ -127,12 +133,13 @@ a {
 }
 
 .chat-messages .message .meta span {
-   color: #777;
+   color: #494242;
 }
 
 .chat-form-container {
    padding: 20px 30px;
-   background-color: #3b3b4f;
+   height: 400px;
+   /* background-color: #1192de; */
    border-radius: 0 0 5px 5px;
 }
 
@@ -146,29 +153,37 @@ input:focus {
    padding: 0px 20px;
    border: none;
    height: 40px;
-   width: 86%;
-   background: #d9edf7;
+   width: 75%;
+   background: white;
    border-radius: 18px;
 }
 
 /* Join Page */
+.container{
+   padding: 8% 20%;
+}
 .join-container {
-   max-width: 500px;
-   margin: 80px auto;
+   /* max-width: 400px; */
+   /* margin-left: 550px; */
    color: #fff;
+   /* margin-top: 180px; */
+   box-shadow: white 0px 0px 10px 5px;
+   border-radius: 50px;
 }
 
 .join-header {
    text-align: center;
    padding: 20px;
-   background: #3b3b4f;
+   background: #1a8efd;
+   font-family:Verdana, Geneva, Tahoma, sans-serif;
+   font-weight: 700;
    border-top-left-radius: 5px;
    border-top-right-radius: 5px;
 }
 
 .join-main {
    padding: 30px 40px;
-   background: #323244;
+   background: white;
 }
 
 .join-main p {
@@ -266,3 +281,10 @@ input:focus {
       min-height: 65vh;
    }
 }
+
+
+
+
+
+
+
