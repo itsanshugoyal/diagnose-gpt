@@ -1,6 +1,6 @@
 const express = require("express");
 const http = require("http");
-const User = require("./models/user");
+const User = require("../model/user");
 const passport = require("passport");
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
@@ -8,7 +8,7 @@ const serverless = require("serverless-http");
 
 const socketIo = require("socket.io");
 const formatMessage = require("../utils/messages");
-const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require("./utils/users");
+const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require("../utils/users");
 
 const cors = require("cors");
 
