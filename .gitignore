@@ -7,6 +7,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
@@ -86,7 +87,7 @@ typings/
 
 # Nuxt.js build / generate output
 .nuxt
-dist
+# dist
 
 # Storybook build outputs
 .out
@@ -94,7 +95,7 @@ dist
 storybook-static
 
 # rollup.js default build output
-dist/
+# dist/
 
 # Gatsby files
 .cache/
