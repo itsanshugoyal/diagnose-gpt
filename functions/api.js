@@ -17,7 +17,6 @@ const router = express.Router();
 require("dotenv").config();
 const server = http.createServer(app);
 app.use(cors()); // Add cors middleware
-app.use("/", router);
 
 const io = new socketIo.Server(server, {
   cors: {
@@ -73,6 +72,8 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use("/", router);
 
 checkAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {
@@ -263,4 +264,5 @@ const PORT = process.env.PORT || 4005;
 server.listen(PORT, () => {
   console.log(`🎯 Server is running on PORT: ${PORT}`);
 });
+
 module.exports.handler = serverless(app);
