@@ -2,19 +2,35 @@
 
 .v1{
   
-  background: url('/assets/bggg.jpg');
-  background-size: cover;
+  /* background: url('/assets/login_doctor.jpg'); */
+  /* background-size: cover; */
   height: 600px;
+  background-color: #5BBDFE;
+  padding: 50px;
+  /* align-content: start; */
   /* padding: 20px; */
 }
+
+#v2{
+  
+    background: url('/assets/login_doctor.jpg');
+    background-size: cover;
+  background-color: white;
+  width: 1300px; 
+  height: 670px;
+  /* align-content: start; */
+  
+}
+
 #img{
-  padding-right: 780px;
+  /* display: flex; */
+  background-size: cover;
 }
 
 body {
     
-    align-items: center; 
-    justify-content: center;
+    /* align-items: flex-start;  */
+    /* justify-content: center; */
     
 }
 
@@ -24,15 +40,22 @@ h2 {
     margin-bottom: 30px;
   }
 
-.form-container {
+  #v2 {
+    padding: 0%;
+    padding-left: 100px;
+    padding-top: 100px;
+  }
+ .form-container {
 
+position: relative;
+left: 0px;
 
-    width: 500px;
-    margin: 0 auto;
+    width: 400px;
+    margin: auto 0;
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-shadow: 10px 10px 5px lightblue;
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+    /* box-shadow: 10px 10px 5px lightblue; */
     align-items: center;
   }
 
@@ -75,7 +98,6 @@ h2 {
   p {
     margin-top: 15px;
   }
-
 
 
 

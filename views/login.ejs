@@ -15,10 +15,11 @@
   </head>
 
   <body class="v1">
-    <%- include('partials/navbar',{login:isAuthenticated}) %>
-
-    <div class="container-fluid" id="img">
-      <div class="form-container" style="box-shadow: 0px 0px 10px 5px white">
+    <div class="container-fluid" id="v2">
+      <div style="padding-left: 100px; margin-bottom: 20px">
+        <h1>HealthEase</h1>
+      </div>
+      <div class="form-container">
         <h2>Login</h2>
         <form action="/login" method="post">
           <div class="form-group">
@@ -43,8 +44,6 @@
         </center>
       </div>
     </div>
-
-    <%- include('partials/footer') %>
 
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
