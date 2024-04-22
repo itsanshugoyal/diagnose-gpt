@@ -5,6 +5,8 @@
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- aos css -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 
     <!-- Bootstrap CSS v5.2.1 -->
     <link
@@ -18,13 +20,13 @@
 
   <body>
     <main>
-      <div class="hero-section-container">
+      <section class="hero-section-container">
         <!-- navbar -->
 
         <%- include('partials/navbar',{login:isAuthenticated}) %>
 
         <!-- hero section -->
-        <div class="hero-section">
+        <div class="hero-section" data-aos="fade-up">
           <div class="text-section">
             <p class="text-headline">❤️ Health comes first</p>
             <h2 class="text-title">Find your Doctor and make an Appointments</h2>
@@ -32,24 +34,26 @@
               Talk to online doctors and get medical advice, online prescriptions, refills and medical notes within
               minutes. On-demand healthcare services at your fingertips.
             </p>
-            <button class="text-appointment-btn" type="button">
-              <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="calendar-check"
-                class="svg-inline--fa fa-calendar-check"
-                role="img"
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 448 512"
-              >
-                <path
-                  fill="currentColor"
-                  d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"
-                ></path>
-              </svg>
-              Book Appointment
-            </button>
+            <a href="/appointment">
+              <button class="text-appointment-btn" type="button">
+                <svg
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="calendar-check"
+                  class="svg-inline--fa fa-calendar-check"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 448 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zM329 305c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-95 95-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L329 305z"
+                  ></path>
+                </svg>
+                Book Appointment
+              </button>
+            </a>
             <div class="text-stats">
               <div class="text-stats-container">
                 <p>145k+</p>
@@ -69,9 +73,9 @@
             <img class="hero-image1" src="/assets/doctor-picture.png" alt="Doctor" />
           </div>
         </div>
-      </div>
+      </section>
       <!-- features section -->
-      <section class="white-section" id="features">
+      <section class="white-section" id="features" data-aos="fade-up">
         <div class="container-fluid features-card mx-auto col-12">
           <!-- floating img -->
 
@@ -87,7 +91,7 @@
             </p>
           </div>
           <div class="row" style="justify-content: center">
-            <div class="card col-md-3 col-12">
+            <div class="card col-md-3 col-12 ml-2" data-aos="zoom-in-up">
               <div class="card-content">
                 <div class="card-body">
                   <img class="img feature-img" src="/assets/analytic.png" />
@@ -104,7 +108,7 @@
                 </div>
               </div>
             </div>
-            <div class="card col-md-3 col-12 ml-2">
+            <div class="card col-md-3 col-12 ml-2" data-aos="zoom-in-up" data-aos-delay="100">
               <div class="card-content">
                 <div class="card-body">
                   <img class="img feature-img" src="/assets/chatbot.png" />
@@ -120,7 +124,7 @@
                 </div>
               </div>
             </div>
-            <div class="card col-md-3 col-12 ml-2">
+            <div class="card col-md-3 col-12 ml-2" data-aos="zoom-in-up" data-aos-delay="200">
               <div class="card-content">
                 <div class="card-body">
                   <img class="img feature-img" src="/assets/fitness.png" />
@@ -136,7 +140,7 @@
                 </div>
               </div>
             </div>
-            <div class="card col-md-3 col-12 ml-2">
+            <div class="card col-md-3 col-12 ml-2" data-aos="zoom-in-up" data-aos-delay="300">
               <div class="card-content">
                 <div class="card-body">
                   <img class="img feature-img" src="/assets/doctor-consultation.png" />
@@ -157,7 +161,7 @@
       </section>
 
       <!-- cta -->
-      <section class="colored-section" id="cta">
+      <section class="colored-section" id="cta" data-aos="fade-right">
         <div class="container-fluid cta">
           <div>
             <img class="cta-img" src="/assets/doctor-book-appointment.png" />
@@ -168,14 +172,16 @@
               Have a health concern? Chat with our AI bot or schedule a virtual consultation with a doctor. We're here
               to help you feel your best.
             </p>
-            <button type="button" class="btn cta-btn">Get Started</button>
+            <a href="/appointment">
+              <button type="button" class="btn cta-btn">Book Appointment</button>
+            </a>
           </div>
         </div>
       </section>
 
       <!-- poplular tests section -->
 
-      <section class="white-section" id="popular-tests">
+      <section class="white-section" id="popular-tests" data-aos="fade-up">
         <div class="container-fluid">
           <div class="popular-tests-header">
             <h2 class="section-heading">Popular Tests</h2>
@@ -187,7 +193,7 @@
             </p>
           </div>
           <div class="row" style="justify-content: center">
-            <div class="card col-md-3 col-12">
+            <div class="card col-md-3 col-12 ml-2" data-aos="zoom-in-up">
               <div class="card-content">
                 <div class="card-body">
                   <img class="img feature-img" src="/assets/blood-test.png" />
@@ -203,7 +209,7 @@
                 </div>
               </div>
             </div>
-            <div class="card col-md-3 col-12 ml-2">
+            <div class="card col-md-3 col-12 ml-2" data-aos="zoom-in-up" data-aos-delay="100">
               <div class="card-content">
                 <div class="card-body">
                   <img class="img feature-img" src="/assets/urine-test.png" />
@@ -218,7 +224,7 @@
                 </div>
               </div>
             </div>
-            <div class="card col-md-3 col-12 ml-2">
+            <div class="card col-md-3 col-12 ml-2" data-aos="zoom-in-up" data-aos-delay="200">
               <div class="card-content">
                 <div class="card-body">
                   <img class="img feature-img" src="/assets/diabetes-test.png" />
@@ -234,7 +240,7 @@
                 </div>
               </div>
             </div>
-            <div class="card col-md-3 col-12 ml-2">
+            <div class="card col-md-3 col-12 ml-2" data-aos="zoom-in-up" data-aos-delay="200">
               <div class="card-content">
                 <div class="card-body">
                   <img class="img feature-img" src="./assets/thyroid-test.png" />
@@ -256,7 +262,7 @@
 
       <!-- testimonials -->
 
-      <section class="colored-section" id="testimonials">
+      <section class="colored-section" id="testimonials" data-aos="fade-right">
         <div class="container-fluid">
           <h2 class="section2-heading">Testimonials</h2>
           <div id="carouselExample" class="carousel slide">
@@ -326,5 +332,13 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 400,
+        duration: 900,
+      });
+    </script>
   </body>
 </html>

@@ -1,27 +1,16 @@
 const express = require("express");
-const http = require("http");
 const User = require("./model/user");
 const passport = require("passport");
 const session = require("express-session");
 const LocalStrategy = require("passport-local").Strategy;
-
-const socketIo = require("socket.io");
 const formatMessage = require("./utils/messages");
 const { userJoin, getCurrentUser, userLeave, getRoomUsers } = require("./utils/users");
-
 const cors = require("cors");
 
 const app = express();
+var http = require("http").Server(app);
+var io = require("socket.io")(http);
 require("dotenv").config();
-const server = http.createServer(app);
-app.use(cors()); // Add cors middleware
-
-const io = new socketIo.Server(server, {
-  cors: {
-    origin: "http://localhost:4005",
-    methods: ["GET", "POST"],
-  },
-});
 
 /* mongoose connection */
 
@@ -83,10 +72,7 @@ checkLoggedIn = (req, res, next) => {
   }
   next();
 };
-// app.locals.login;
 app.get("/", checkAuthenticated, (req, res) => {
-  // login = req.isAuthenticated();
-
   res.render("home.ejs", { isAuthenticated: req.isAuthenticated() });
 });
 
@@ -95,7 +81,7 @@ app.get("/about", (req, res) => {
   res.render("aboutus", { isAuthenticated: req.isAuthenticated() });
 });
 
-/* about */
+/* contact us */
 app.get("/contact", (req, res) => {
   res.render("contactus", { isAuthenticated: req.isAuthenticated() });
 });
@@ -151,7 +137,6 @@ app.post("/api/chat", async (req, res) => {
     res.status(500).json({ error: "Something went wrong" });
   }
 });
-app.post("/medicalquery", (req, res) => {});
 
 /* login */
 app.get("/login", checkLoggedIn, (req, res) => {
@@ -208,38 +193,46 @@ app.post("/logout", function (req, res, next) {
 
 /* chat room */
 
-app.get("/chat", (req, res) => {
+app.get("/appointment", (req, res) => {
   res.render("chatpage", { isAuthenticated: req.isAuthenticated() });
 });
 
-// run when client connects
+app.post("/appointment", (req, res) => {
+  const { username, room } = req.body;
+
+  res.redirect(`/chat?username=${username}&room=${room}`);
+});
+
+app.get("/chat", (req, res) => {
+  res.render("chatroom", {
+    isAuthenticated: req.isAuthenticated(),
+    username: req.query.username,
+    room: req.query.room,
+  });
+});
+const botName = "MediChat";
 io.on("connection", (socket) => {
   socket.on("joinRoom", ({ username, room }) => {
     const user = userJoin(socket.id, username, room);
 
     socket.join(user.room);
 
-    // welcome current user
-    socket.emit("message", formatMessage(botName, "Welcome to XeroxChat!"));
+    socket.emit("message", formatMessage(botName, "Welcome to MediChat!"));
 
-    // broadcast when a user connects
     socket.broadcast.to(user.room).emit("message", formatMessage(botName, `${user.username} has joined the chat!`));
 
-    // send users and room info
     io.to(user.room).emit("roomUsers", {
       room: user.room,
       users: getRoomUsers(user.room),
     });
   });
 
-  // listen for chatMessage
   socket.on("chatMessage", (msg) => {
     const user = getCurrentUser(socket.id);
 
     io.to(user.room).emit("message", formatMessage(user.username, msg));
   });
 
-  // runs when clients disconnects
   socket.on("disconnect", () => {
     const user = userLeave(socket.id);
 
@@ -256,7 +249,7 @@ io.on("connection", (socket) => {
 });
 
 /* server start */
-const PORT = process.env.PORT || 4005;
-server.listen(PORT, () => {
+const PORT = process.env.PORT || 4000;
+http.listen(PORT, () => {
   console.log(`🎯 Server is running on PORT: ${PORT}`);
 });

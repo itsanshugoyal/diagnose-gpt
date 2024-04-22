@@ -20,7 +20,7 @@ body {
    /* background: #1b1b32; */
    /* background: rgb(16, 109, 140); */
    /* margin: 20px;   */
-   background: url("./medical.jpg");
+   background: url("/assets/medical-bg.jpg");
    background-repeat: no-repeat;
    background-size: cover; 
 }
@@ -138,7 +138,7 @@ a {
 
 .chat-form-container {
    padding: 20px 30px;
-   height: 400px;
+   /* height: 400px; */
    /* background-color: #1192de; */
    border-radius: 0 0 5px 5px;
 }
@@ -229,7 +229,7 @@ input:focus {
    color: #34495e;
    background: #b1d8eb;
 }
-
+/* 
 @media (max-width: 700px) {
    .chat-main {
       display: block;
@@ -257,7 +257,7 @@ input:focus {
    .chat-form-container input[type='text'] {
       width: 100%;
    }
-}
+} */
 
 .send-button {
    cursor: pointer;
