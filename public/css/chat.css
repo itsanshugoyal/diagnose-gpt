@@ -20,7 +20,7 @@ body {
    /* background: #1b1b32; */
    /* background: rgb(16, 109, 140); */
    /* margin: 20px;   */
-   background: url("/assets/medical-bg.jpg");
+   background: url("/assets/medical-bg2.jpeg");
    background-repeat: no-repeat;
    background-size: cover; 
 }
@@ -60,7 +60,7 @@ a {
 
 .chat-container {
    max-width: 700px;
-   height: 700px;
+   /* height: 700px; */
    margin: 30px auto;
    overflow: hidden;
    box-shadow: white 0px 0px 10px 5px;

@@ -1,68 +1,101 @@
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.v1 {
+  padding: 50px;
+}
 
+#v2 {
+  background: url("/assets/login_doctor.jpg");
+  background-size: cover;
+  background-color: white;
+  width: 1300px;
+  height: 670px;
+  padding: 0%;
+  padding-left: 100px;
+  padding-top: 20px;
+}
 
-.v1{
-  
-    background: url('/assets/bggg.jpg');
-    background-size: cover;
-    height: 600px;
-    /* padding: 20px; */
-  }
-  #img{
-    padding-right: 780px;
-  }
-  
- 
-  
-  h2 {
-      text-align: center;
-      margin-bottom: 30px;
-    }
-  
-  .form-container {
-  
-  
-      width: 500px;
-      margin: 0 auto;
-      padding: 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      box-shadow: 10px 10px 5px lightblue;
-      align-items: center;
-    }
-  
-    .form-group {
-      margin-bottom: 15px;
-    }
-  
-    .form-group label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-  
-    .form-group input {
-      width: 100%;
-      padding: 8px;
-      font-size: 16px;
-      border: 1px solid #ccc;
-      border-radius: 3px;
-    }
-  
-    .submit-btn {
-      display: block;
-      width: 100%;
-      padding: 10px;
-      background-color: #1A8EFD;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-  
-    .submit-btn:hover {
-      background-color: white;
-      color: #1A8EFD;
-      border: 1px solid;
-      border-color: #1A8EFD;
-    }
-  
+#img {
+  /* display: flex; */
+  background-size: cover;
+}
+
+body {
+  background-image: linear-gradient(lightblue, pink);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.form-container {
+  position: relative;
+  left: 0px;
+
+  width: 400px;
+  margin: auto 0;
+  padding: 20px;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 5px; */
+  /* box-shadow: 10px 10px 5px lightblue; */
+  align-items: center;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background-color: #1a8efd;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-btn:hover {
+  background-color: white;
+  color: #1a8efd;
+  border: 1px solid;
+  border-color: #1a8efd;
+}
+
+p {
+  margin-top: 15px;
+}
+h1 {
+  width: 20%;
+  background-clip: text;
+
+  background-image: -webkit-linear-gradient(43deg, #4158d0 0%, #c850c0 46%, #ffcc70 100%);
+  -webkit-text-fill-color: transparent;
+  margin-top: 50px;
+}
+
+.header-div {
+  margin-left: 100px;
+}
